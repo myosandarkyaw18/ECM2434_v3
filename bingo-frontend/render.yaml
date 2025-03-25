@@ -5,20 +5,23 @@ services:
     buildCommand: 
       - pip install -r requirements.txt
     startCommand: 
-      - "gunicorn ECM2434-v3.wsgi:application --bind 0.0.0.0:8000"
+      - gunicorn ECM2434_A_2_202425.wsgi:application --bind 0.0.0.0:8000
     envVars:
       - key: SECRET_KEY
-        value: YOUR_SECRET_KEY
+        value: YOUR_SECRET_KEY  # Replace with your actual secret key
       - key: DEBUG
         value: 'False'
+      - key: DJANGO_SETTINGS_MODULE
+        value: ECM2434_A_2_202425.settings
       - key: ALLOWED_HOSTS
         value: '0.0.0.0,localhost,127.0.0.1'
-        
+
   - type: web
     name: bingo-frontend
     env: node
     buildCommand: 
+      - cd bingo-frontend
       - npm install
       - npm run build
     startCommand: 
-      - serve -s build
+      - npx serve -s build
