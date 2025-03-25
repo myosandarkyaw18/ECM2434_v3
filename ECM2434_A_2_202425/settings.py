@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 2️⃣ Security Settings
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-fallback-secret-key')
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ecm2434-v3.onrender.com']
 TIME_ZONE = 'Europe/London'
@@ -89,7 +89,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 # 8️⃣ Password Validation
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -110,9 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-    {
-        'NAME': 'bingo.validators.CustomPasswordValidator',
     },
 ]
 
