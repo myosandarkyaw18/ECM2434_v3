@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: django-backend
+    name: ECM2434_A_2_202425
     env: python
     buildCommand: 
       - pip install -r requirements.txt
@@ -15,7 +15,7 @@ services:
         value: '0.0.0.0,localhost,127.0.0.1'
         
   - type: web
-    name: react-frontend
+    name: bingo-frontend
     env: node
     buildCommand: 
       - npm install
